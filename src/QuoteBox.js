@@ -7,7 +7,6 @@ function QuoteBox() {
 
   useEffect(() => {
     fetchAndSetQuote();
-    console.log("useeffect");
   }, []);
 
   async function fetchAndSetQuote() {
@@ -30,6 +29,9 @@ function QuoteBox() {
 
       <Link to="twitter.com/intent/tweet" id="tweet-quote">
         Tweet
+      </Link>
+      <Link to="tumblr.com/intent/tweet" id="tumblr-quote">
+        Tumblr
       </Link>
       <button id="new-quote" onClick={fetchAndSetQuote}>
         New Quote
