@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import IconButton from "./IconButton";
+import Twitter from "./assets/twitter.png";
+import Tumblr from "./assets/tumblr.png";
 
 function QuoteBox() {
   const [quoteData, setQuoteData] = useState({ q: "", a: "" });
@@ -26,7 +29,8 @@ function QuoteBox() {
     <div id="quote-box" className="mx-auto w-48">
       <p id="text">{quoteData.q}</p>
       <p id="author">{quoteData.a}</p>
-
+      <IconButton icon={Twitter} />
+      <IconButton icon={Tumblr} />
       <Link to="twitter.com/intent/tweet" id="tweet-quote">
         Tweet
       </Link>
