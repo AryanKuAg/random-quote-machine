@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { TwitterShareButton, TumblrShareButton } from "react-share";
+
 import randomColor from "randomcolor";
 import axios from "axios";
 import IconButton from "./IconButton";
@@ -38,30 +39,48 @@ function QuoteBox() {
     <div
       id="quote-box"
       className="mx-auto rounded-md p-10"
-      style={{ width: "550px", backgroundColor: "white" }}
+      style={{ maxWidth: "550px", backgroundColor: "white" }}
     >
-      <blockquote id="text" style={{ color: color }} className="text-4xl">
+      <blockquote
+        id="text"
+        style={{ color: color }}
+        className="text-4xl relative"
+      >
+        <span className="text-6xl absolute">&ldquo;</span> &nbsp; &nbsp;{" "}
         {quoteData.q}
       </blockquote>
-      <p id="author" style={{ color: color }} className="my-4 text-xl">
+      <p
+        id="author"
+        style={{ color: color, textAlign: "end" }}
+        className="my-8 text-xl"
+      >
         - {quoteData.a}
       </p>
-      <IconButton icon={Twitter} backgroundColor={color} />
-      <IconButton icon={Tumblr} backgroundColor={color} />
-      {/* <Link to="twitter.com/intent/tweet" id="tweet-quote">
-        Tweet
-      </Link>
-      <Link to="tumblr.com/intent/tweet" id="tumblr-quote">
-        Tumblr
-      </Link> */}
-      <button
-        id="new-quote"
-        className="p-4 rounded-md font-bold text-white"
-        onClick={fetchAndSetQuote}
-        style={{ backgroundColor: color }}
-      >
-        New Quote
-      </button>
+      <div className="flex justify-between">
+        <div className="flex gap-4">
+          <TwitterShareButton
+            url={window.location.href}
+            title={quoteData.q + " - " + quoteData.a}
+            via={"alemantrix"}
+          >
+            <IconButton icon={Twitter} backgroundColor={color} />
+          </TwitterShareButton>
+          <TumblrShareButton
+            url={window.location.href}
+            title={quoteData.q + " - " + quoteData.a}
+          >
+            <IconButton icon={Tumblr} backgroundColor={color} />
+          </TumblrShareButton>
+        </div>
+        <button
+          id="new-quote"
+          className="p-4 rounded-md font-bold text-white"
+          onClick={fetchAndSetQuote}
+          style={{ backgroundColor: color }}
+        >
+          New Quote
+        </button>
+      </div>
     </div>
   );
 }
