@@ -1,7 +1,7 @@
 import React from "react";
 
-function IconButton({ icon, event }) {
-  const buttonStyle = { borderRadius: "4px", backgroundColor: "red" };
+function IconButton({ icon, event, backgroundColor }) {
+  const buttonStyle = { borderRadius: "4px", backgroundColor: backgroundColor };
 
   return (
     <button onClick={event} style={buttonStyle}>

@@ -3,7 +3,7 @@ import QuoteBox from "./QuoteBox";
 
 function App() {
   return (
-    <div>
+    <div className="flex flex-col justify-center h-screen -mt-5">
       <QuoteBox />
     </div>
   );
